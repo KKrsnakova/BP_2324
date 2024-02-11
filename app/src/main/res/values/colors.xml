@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="greenL">#62A961</color>
+    <color name="greenD">#196840</color>
+    <color name="greyText">#727272</color>
+    <color name="hint">#A1887F</color>
+    <color name="yellow">#FFFF00</color>
+
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#69F0AE</color>
+
+
+    <color name="boxStrokeColor">#4CAF50</color>
+    <color name="hintTextColor">#8BC34A</color>
+
+    <color name="labelTextColor">#727272</color>
+
+    <!--Colors for text in practise-->
+    <color name="textRed">#CC0000</color>
+    <color name="textGreen">#388E3C</color>
+    <color name="textBlack">#FF000000</color>
+
+
+
+
+
+
+
+</resources>

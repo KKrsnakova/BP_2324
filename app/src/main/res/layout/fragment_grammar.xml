@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.GrammarFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameOfsection"
+        android:textSize="30dp"/>
+
+
+    <Button
+        android:id="@+id/btnPresent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Present tense"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/btnPast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Past tense"
+        android:background="@drawable/btn_past_shape"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/btnFuture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_future_shape"
+        android:text="Future time"
+        android:layout_marginTop="20dp"
+        android:padding="16dp"/>
+
+
+</LinearLayout>

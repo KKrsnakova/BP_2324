@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/btn_shape.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Základní obdélníkový tvar tlačítka -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FF6200EE" /> <!-- Barva pozadí tlačítka -->
+            <corners android:radius="4dp" /> <!-- Zaoblení rohů -->
+        </shape>
+    </item>
+    <!-- Šipka směřující vpravo -->
+    <item android:gravity="center_vertical|right" android:right="16dp">
+        <rotate
+            android:fromDegrees="45"
+            android:pivotX="-40%"
+            android:pivotY="87%">
+            <shape android:shape="rectangle">
+                <solid android:color="#FFFFFF" /> <!-- Barva šipky -->
+                <size
+                    android:width="24dp"
+                    android:height="8dp" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

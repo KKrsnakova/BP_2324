@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddWordFragment">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New Word"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        style="@style/TextAppearance.AppCompat.Title"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/customTextInputStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tfczWord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Czech word">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+<com.google.android.material.textfield.TextInputLayout
+    style="@style/customTextInputStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tfenWord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="English word">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/customTextInputStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/customTextInputStyle"
+            android:id="@+id/tfLessonNum"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Lesson number">
+
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/customBtnStyle"
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:text="Save"/>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/customBtnCloseOrBasicStyle"
+        android:id="@+id/saveClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:text="Close"/>
+
+
+
+</LinearLayout>

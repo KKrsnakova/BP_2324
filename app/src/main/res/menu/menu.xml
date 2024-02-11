@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_dictionary"
+        android:icon="@drawable/ico_dictionary"
+        android:title="Dictionary" />
+
+    <item
+        android:id="@+id/navigation_grammar"
+        android:icon="@drawable/ico_education"
+        android:title="Grammar" />
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ico_home"
+        android:title="Home" />
+
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ico_settings"
+        android:title="Practis" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ico_person2"
+        android:title="Profile" />
+
+
+</menu>

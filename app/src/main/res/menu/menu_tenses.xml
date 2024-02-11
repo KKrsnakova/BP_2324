@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/present_simple"
+        android:title="Present Simple" />
+
+    <item
+        android:id="@+id/present_continuous"
+        android:title="Present Continuous" />
+
+    <item
+        android:id="@+id/present_perfect"
+        android:title="Present Perfect" />
+
+    <item
+        android:id="@+id/present_perfect_continuous"
+        android:title="Present Perfect Continuous" />
+</menu>

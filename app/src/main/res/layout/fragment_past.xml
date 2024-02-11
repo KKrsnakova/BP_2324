@@ -1,0 +1,58 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top|center"
+    android:orientation="vertical"
+    tools:context=".grammarFragments.PastFragment">
+
+    <RadioGroup
+        android:id="@+id/tenseRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/var_1"
+            style="@style/customRadioButtonTenseStyle"
+            android:checked="true"
+            android:text="Past Simple" />
+
+        <RadioButton
+            android:id="@+id/var_2"
+            style="@style/customRadioButtonTenseStyle"
+
+            android:text="Past Continuous" />
+
+        <RadioButton
+            android:id="@+id/var_3"
+            style="@style/customRadioButtonTenseStyle"
+
+            android:text="Past Perfect" />
+
+        <RadioButton
+            android:id="@+id/var_4"
+            style="@style/customRadioButtonTenseStyle"
+
+            android:text="Past Perfect Continuous" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/enName"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/czName"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="18sp" />
+
+</LinearLayout>
