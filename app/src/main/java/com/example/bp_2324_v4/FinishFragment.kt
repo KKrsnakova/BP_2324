@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.bp_2324_v4.databinding.FragmentFinishBinding
 import com.example.bp_2324_v4.databinding.FragmentWordQuestionBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -42,6 +43,7 @@ class FinishFragment : Fragment() {
         }
 
 
+
         val lessonStatsRef = firestore.collection("users").document(currentUserId)
             .collection("lessons").document(lessonNum)
 
@@ -56,6 +58,19 @@ class FinishFragment : Fragment() {
                 binding.tvPoints.text = "$points"
                 binding.tvSkipped.text = "$skipped/$wordCount"
                 binding.tvMistakes.text = "$mistakes/$wordCount"
+
+             /*  val ref = firestore.collection("users").document(currentUserId)
+
+                ref.update("points",FieldValue.increment(points))
+                    .addOnSuccessListener {
+                        // Úspěšně aktualizováno
+                        println("Points updated successfully!")
+                    }
+                    .addOnFailureListener { e ->
+                        // Chyba při aktualizaci
+                        println("Error updating points: $e")
+                    }*/
+
 
             } else {
                 Toast.makeText(context, "Lesson not found.", Toast.LENGTH_SHORT).show()
