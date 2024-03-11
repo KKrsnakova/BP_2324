@@ -1,11 +1,31 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center"
+    android:padding="55dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/paper"
     tools:context=".FinishFragment">
+
+    <TextView
+        android:id="@+id/tvLessonNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:paddingTop="40dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="Lesson "
+        android:layout_margin="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
 
     <TextView
         android:id="@+id/tvFinish"
@@ -135,4 +155,15 @@
 
     </androidx.cardview.widget.CardView>
 
+
+
+    <Button
+        android:id="@+id/btnOK"
+        style="@style/customBtnStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Ok"/>
 </LinearLayout>
+
+</RelativeLayout>

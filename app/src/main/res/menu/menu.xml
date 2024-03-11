@@ -11,10 +11,10 @@
         android:icon="@drawable/ico_education"
         android:title="Grammar" />
 
-    <item
-        android:id="@+id/navigation_home"
+   <item
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/ico_home"
-        android:title="Home" />
+        android:title="Overview" />
 
 
     <item
@@ -23,9 +23,9 @@
         android:title="Practis" />
 
     <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/ico_person2"
-        android:title="Profile" />
+        android:id="@+id/navigation_translator"
+        android:icon="@drawable/ico_translate"
+        android:title="Translator" />
 
 
 </menu>

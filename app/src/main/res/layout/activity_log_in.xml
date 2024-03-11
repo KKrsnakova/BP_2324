@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/ico_person"
+            android:drawableStart="@drawable/ico_person2"
             android:fontFamily="@font/inter_bold"
             android:hint="E-mail"
             android:importantForAutofill="no"

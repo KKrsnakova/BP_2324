@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Lesson"
+            android:textColor="@color/textBlack"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
@@ -28,7 +29,20 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:text="1"
+            android:textColor="@color/textBlack"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <ImageView
+            android:id="@+id/ivAttempted"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ico_check"
+            app:tint="@color/colorPrimary" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

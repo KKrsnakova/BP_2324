@@ -5,19 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="50dp"
     android:gravity="center_horizontal"
+    android:background="@drawable/paper"
     tools:context=".WordQuestionFragment">
 
     <TextView
         android:id="@+id/tvLessonNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:paddingTop="40dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:text="Lesson "
         android:layout_margin="10dp"/>
+
+
+    <TextView
+        android:id="@+id/tvQuestionNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingTop="70dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
     <Button
@@ -25,8 +41,9 @@
         style="@style/customBtnCloseOrBasicStyle"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
         android:contentDescription="@string/close"
         android:drawableTop="@drawable/ico_close"
         android:gravity="center_vertical|end" />

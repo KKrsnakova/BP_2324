@@ -1,13 +1,14 @@
 package com.example.bp_2324_v4.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.bp_2324_v4.R
 import com.example.bp_2324_v4.databinding.FragmentGrammarBinding
 import com.example.bp_2324_v4.grammarFragments.PastFragment
+import com.example.bp_2324_v4.grammarFragments.PresentFragment
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GrammarFragment : Fragment() {
@@ -26,7 +27,7 @@ class GrammarFragment : Fragment() {
         firestore = FirebaseFirestore.getInstance()
 
         binding.btnPresent.setOnClickListener {
-            val fragment = createFragmentWithArgs("present")
+            val fragment = PresentFragment()
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .addToBackStack(null)

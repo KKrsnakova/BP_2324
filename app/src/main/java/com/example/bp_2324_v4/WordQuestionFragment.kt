@@ -1,12 +1,12 @@
 package com.example.bp_2324_v4
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.example.bp_2324_v4.databinding.FragmentWordQuestionBinding
 import com.example.bp_2324_v4.fragments.PracticeFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -27,6 +27,8 @@ class WordQuestionFragment : Fragment() {
     private var points: Int = 0
     private var skipped: Int = 0
     private var mistakes: Int = 0
+    private var wordCount: Int = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,8 +59,8 @@ class WordQuestionFragment : Fragment() {
 
             } else {
                 // Dosáhli jsme konce slovíček, zobrazíme zprávu o dokončení
-                updateLessonStats()
                 Toast.makeText(context, "You have completed all words!", Toast.LENGTH_SHORT).show()
+                updateLessonStats()
                 showFinishStats()
             }
         }
@@ -72,6 +74,8 @@ class WordQuestionFragment : Fragment() {
                 commit()
             }
         }
+
+
 
 
 
@@ -149,12 +153,14 @@ class WordQuestionFragment : Fragment() {
     }
 
     private fun displayWord(index: Int) {
+        val wordCount = wordsList.size
         binding.btnNext.visibility = View.GONE
         val word = wordsList[index]
         val czechWord = word["czech"]
         val englishWord = word["english"]
         binding.tvCzechWord.text = czechWord
         binding.etEnglishWord.setText("")
+        binding.tvQuestionNum.text = "${index+1}/$wordCount"
     }
 
     private fun checkAnswer() {

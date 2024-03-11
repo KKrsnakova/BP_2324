@@ -7,6 +7,29 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <!--Present Simple-->
+
+    <string name="usagePS">
+    The Present Simple tense is used to describe habits, routines, general truths, and facts.
+        It is also used for scheduled events in the near future and for narration in stories.
+    </string>
+
+    <string name="formPS">
+        For most verbs, we add "-s" or "-es" to the base form of the verb in the third person singular (he, she, it).
+        The base form of the verb is used for all other subjects.
+    </string>
+
+    <string name="structurePS">
+    <![CDATA[
+    <ul>
+        <li>Affirmative: Subject + base form of the verb (+ -s/-es for third person singular)</li>
+        <li>Negative: Subject + do/does not + base form of the verb</li>
+        <li>Question: Do/Does + subject + base form of the verb?</li>
+    </ul>
+    ]]>
+    </string>
+
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus

@@ -64,7 +64,6 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            style="@style/customTextInputStyle"
             android:id="@+id/tfLessonNum"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -74,17 +73,34 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAlignment="center"
+    android:orientation="horizontal">
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         style="@style/customBtnStyle"
-        android:id="@+id/saveButton"
-        android:layout_width="match_parent"
+        android:id="@+id/btnSaveClose"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="20dp"
-        android:text="Save"/>
+        android:layout_weight="1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:text="Save\n &amp;\n Close"/>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
+        style="@style/customBtnStyle"
+        android:id="@+id/btnSaveAddNext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:text="Save\n &amp;\n  Add Next"/>
+
+</LinearLayout>
+
+    <Button
         style="@style/customBtnCloseOrBasicStyle"
         android:id="@+id/saveClose"
         android:layout_width="match_parent"

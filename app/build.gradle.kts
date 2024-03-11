@@ -53,6 +53,7 @@ dependencies {
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
+    implementation("com.google.mlkit:translate:17.0.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -63,5 +64,12 @@ dependencies {
 
     //Cardview
     implementation("androidx.cardview:cardview:1.0.0")
+
+    //Translator
+    implementation ("com.google.mlkit:translate:17.0.2")
+
+    //Material Desing
+   // implementation ("com.google.android.material:material:1.11.0")
+
 
 }

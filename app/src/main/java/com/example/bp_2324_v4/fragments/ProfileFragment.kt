@@ -39,16 +39,16 @@ class ProfileFragment : Fragment() {
                     val email = documentSnapshot.getString("email") ?: "N/A"
                     val imageUrl = documentSnapshot.getString("imageUrl")
 
-                    val pts = documentSnapshot.getString("points") ?: "N/A"
-                    val level = documentSnapshot.getString("lessons") ?: "N/A"
-                    val words = documentSnapshot.getString("words") ?: "N/A"
+                    val pts = documentSnapshot.getLong("points")?.toInt() ?: 0
+                    val level = documentSnapshot.getLong("lessons")?.toInt() ?: 0
+                    val words = documentSnapshot.getLong("words")?.toInt() ?: 0
 
                     binding.tfFullName.text = name
                     binding.tfEmail.text = email
 
-                    binding.tfPoints.text = pts
-                    binding.tfLevels.text = level
-                    binding.tfWords.text = words
+                    binding.tfPoints.text = pts.toString()
+                    binding.tfLevels.text = level.toString()
+                    binding.tfWords.text = words.toString()
 
                     // Kontrola, zda existuje URL obrázku, a načtení obrázku
                     if (!imageUrl.isNullOrEmpty()) {

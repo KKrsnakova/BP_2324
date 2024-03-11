@@ -20,8 +20,7 @@
 
     <!-- Style for Button SaveWord -->
     <style name="customBtnStyle" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/colorPrimary
-        </item> <!-- Use the primary color for the button background -->
+        <item name="backgroundTint">@color/colorPrimary </item>
         <item name="android:textColor">@color/white</item> <!-- White text color -->
         <item name="cornerRadius">10dp</item> <!-- Define the corner radius if needed -->
 
@@ -32,7 +31,6 @@
         <item name="backgroundTint">@color/hint</item>
         <item name="android:textColor">@color/black</item>
         <item name="cornerRadius">10dp</item> <!-- Define the corner radius if needed -->
-        <!-- Other button attributes you wish to customize -->
     </style>
 
 
@@ -40,7 +38,6 @@
     <style name="customFloatingBtnAdd" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="backgroundTint">@color/greenD</item>
         <item name="rippleColor">@color/colorPrimary</item>
-        <!-- Other FAB attributes you wish to customize -->
     </style>
 
 
@@ -67,6 +64,16 @@
         <item name="android:layout_marginStart">50dp</item>
         <item name="android:layout_marginEnd">50dp</item>
         <item name="android:padding">10dp</item>
+    </style>
+
+    <!-- Style for Dictionary Button  -->
+    <style name="customBtnLoginStyleDictionary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
     </style>
 
     <!-- Style for Login/Register TextFields  -->

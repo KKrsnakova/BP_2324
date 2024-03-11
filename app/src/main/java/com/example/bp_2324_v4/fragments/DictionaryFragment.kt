@@ -1,19 +1,19 @@
 package com.example.bp_2324_v4.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bp_2324_v4.AddWordFragment
 import com.example.bp_2324_v4.R
-import com.example.bp_2324_v4.model.Word
 import com.example.bp_2324_v4.WordAdapter
 import com.example.bp_2324_v4.databinding.FragmentDictionaryBinding
+import com.example.bp_2324_v4.model.Word
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -27,33 +27,31 @@ class DictionaryFragment : Fragment() {
     private var currentUserId: String? = null
     private var enMain = true
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDictionaryBinding.inflate(inflater, container, false)
 
-        // Inicializujeme Firestore
+
+        // Inicializace Firestore
         firestore = FirebaseFirestore.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
         currentUserId = firebaseAuth.currentUser?.uid
 
-        // progressBar
+        // Zobrazení progressBaru
         binding.progressBar.visibility = View.VISIBLE
 
-        // Zde získáte data ze své kolekce a aktualizujete RecyclerView
+        // Získání dat a aktualizace RecyclerView
         loadWords()
-
 
         binding.btnAddWord.setOnClickListener {
             val addWordFragment = AddWordFragment()
-            val transaction = parentFragmentManager.beginTransaction()
-
-            transaction.replace(R.id.fragment_container, addWordFragment)
-            transaction.addToBackStack(null)
-
-            transaction.commit()
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment_container, addWordFragment)
+                addToBackStack(null)
+                commit()
+            }
         }
 
         binding.btnEnXCz.setOnClickListener {
@@ -87,15 +85,15 @@ class DictionaryFragment : Fragment() {
         })
         itemTouchHelper.attachToRecyclerView(binding.recyclerWords)
 
-
         return binding.root
-    }
 
+    }
 
     private fun loadWords() {
         val userId = firebaseAuth.currentUser?.uid ?: return
-
         if (enMain) {
+
+            // Získání dat z Firestore
             firestore.collection("users").document(userId).collection("lessons")
                 .get()
                 .addOnSuccessListener { lessonsSnapshot ->
@@ -114,23 +112,29 @@ class DictionaryFragment : Fragment() {
                             )
                         }
                     }
-                    val adapter = WordAdapter(allWords)
-                    binding.recyclerWords.layoutManager = LinearLayoutManager(context)
+
+                    // Vytvoření adaptéru a jeho připojení k RecyclerView
+                    val adapter = WordAdapter(requireContext(), allWords)
+                    binding.recyclerWords.layoutManager = LinearLayoutManager(requireContext())
                     binding.recyclerWords.adapter = adapter
                     binding.progressBar.visibility = View.GONE
 
+                    adapter?.setBtnVisibility(enMain)
+
+                    // Aktualizace počtu slov a lekcí uživatele
                     updateUserWordCount()
                     updateUserLevelCount()
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(
-                        context,
+                        requireContext(),
                         "Error loading words: ${exception.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
 
         } else {
+            // Získání dat z Firestore
 
             firestore.collection("users").document(userId).collection("lessons")
                 .get()
@@ -141,8 +145,8 @@ class DictionaryFragment : Fragment() {
                         words?.forEach { wordMap ->
                             allWords.add(
                                 Word(
-                                    czech = wordMap["english"] ?: "",
                                     english = wordMap["czech"] ?: "",
+                                    czech = wordMap["english"] ?: "",
                                     lessonNum = lessonDoc.id,
                                     userId = userId,
                                     dbWordId = wordMap["dbWordId"] ?: ""
@@ -150,25 +154,28 @@ class DictionaryFragment : Fragment() {
                             )
                         }
                     }
-                    val adapter = WordAdapter(allWords)
-                    binding.recyclerWords.layoutManager = LinearLayoutManager(context)
+
+                    // Vytvoření adaptéru a jeho připojení k RecyclerView
+                    val adapter = WordAdapter(requireContext(), allWords)
+                    binding.recyclerWords.layoutManager = LinearLayoutManager(requireContext())
                     binding.recyclerWords.adapter = adapter
                     binding.progressBar.visibility = View.GONE
 
+                    adapter?.setBtnVisibility(enMain)
+
+                    // Aktualizace počtu slov a lekcí uživatele
                     updateUserWordCount()
                     updateUserLevelCount()
                 }
                 .addOnFailureListener { exception ->
                     Toast.makeText(
-                        context,
+                        requireContext(),
                         "Error loading words: ${exception.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -190,7 +197,7 @@ class DictionaryFragment : Fragment() {
                     val userRef = firestore.collection("users").document(userId)
 
                     // Aktualizace dokumentu uživatele s novým počtem levelů
-                    userRef.update("lessons", levelCount.toString())
+                    userRef.update("lessons", levelCount)
                         .addOnSuccessListener {
                             //TODO Log.d("UpdateUser", "User level count updated successfully.")
                         }
@@ -221,7 +228,7 @@ class DictionaryFragment : Fragment() {
                     val userRef = firestore.collection("users").document(userId)
 
                     // Aktualizace dokumentu uživatele s novým počtem slovíček
-                    userRef.update("words", wordCount.toString())
+                    userRef.update("words", wordCount)
                         .addOnSuccessListener {
                             //TODO Log.d("UpdateUser", "User word count updated successfully.")
                         }

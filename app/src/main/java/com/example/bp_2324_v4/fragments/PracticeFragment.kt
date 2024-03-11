@@ -1,12 +1,13 @@
 package com.example.bp_2324_v4.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bp_2324_v4.LessonAdapter
 import com.example.bp_2324_v4.databinding.FragmentPracticeBinding
 import com.example.bp_2324_v4d.model.Lesson
@@ -33,6 +34,10 @@ class PracticeFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         currentUserId = firebaseAuth.currentUser?.uid
 
+        val adapter = LessonAdapter(emptyList())
+
+        binding.recyclerLessons.layoutManager = LinearLayoutManager(context)
+        binding.recyclerLessons.adapter = adapter
 
         loadLessons()
 
@@ -46,14 +51,15 @@ class PracticeFragment : Fragment() {
             .get()
             .addOnSuccessListener { documents ->
                 val lessonsList = documents.mapNotNull { document ->
-                    val lessonNum = document.id
+                    val lessonNum = document.id.toInt()
                     val words = document.get("words") as? List<*>
                     val wordCount = words?.size ?: 0
-                    Lesson(lessonNum, wordCount)
+                    val done = document.getBoolean("done") ?: false
+                    Lesson(lessonNum, wordCount, done)
                 }
 
                 val adapter = LessonAdapter(lessonsList)
-                binding.recyclerLessons.layoutManager = GridLayoutManager(context, 2) // 2 sloupce
+                binding.recyclerLessons.layoutManager = GridLayoutManager(context, 2)
                 binding.recyclerLessons.adapter = adapter
                 binding.progressBar.visibility = View.GONE
             }

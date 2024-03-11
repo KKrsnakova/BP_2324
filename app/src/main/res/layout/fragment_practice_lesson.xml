@@ -7,25 +7,29 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
+    android:background="@drawable/paper"
     tools:context=".PracticeLessonFragment">
 
 
     <TextView
-        android:id="@+id/tvtext"
+        android:id="@+id/tvLessonNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Lekce 1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textAlignment="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvWordCount"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:text="wordcoount" >
     </TextView>
 
     <Button
+        style="@style/customBtnStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnStart"

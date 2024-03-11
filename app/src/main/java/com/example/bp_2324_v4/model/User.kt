@@ -5,9 +5,9 @@ data class User(
     val email : String?,
     val imgUri: String?,
     val role: Int,
-    val points: String,
-    val levels: String,
-    val words: String,
+    val points: Int,
+    val levels: Int,
+    val words: Int,
     )
 
 {

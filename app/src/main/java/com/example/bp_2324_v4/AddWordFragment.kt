@@ -15,7 +15,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 
 class AddWordFragment : Fragment() {
-
     private var _binding: FragmentAddWordBinding? = null
     private val binding get() = _binding!!
 
@@ -31,14 +30,20 @@ class AddWordFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-        binding.saveButton.setOnClickListener {
+
+        // Získání nejvyššího čísla lekce
+        getHighestLessonNumber()
+
+        binding.btnSaveClose.setOnClickListener {
             val cz = binding.tfczWord.text.toString().trim()
             val en = binding.tfenWord.text.toString().trim()
-            val lessonNum = binding.tfLessonNum.text.toString().trim()
+            val lessonNum = binding.tfLessonNum.text.toString().trim().toIntOrNull() ?: 0
 
             if (cz.isNotEmpty() && en.isNotEmpty()) {
                 addWordToLesson(cz, en, lessonNum)
 
+                // Návrat do DictionaryFragment
+                backToDictionary()
 
             } else {
                 Toast.makeText(requireContext(), "All fields are required", Toast.LENGTH_SHORT)
@@ -46,29 +51,63 @@ class AddWordFragment : Fragment() {
             }
         }
 
-        binding.saveClose.setOnClickListener {
-            val backToDictionary = DictionaryFragment()
-            val transaction = parentFragmentManager.beginTransaction()
+        binding.btnSaveAddNext.setOnClickListener {
 
-            transaction.replace(R.id.fragment_container, backToDictionary)
-            transaction.addToBackStack(null)
 
-            transaction.commit()
+            val cz = binding.tfczWord.text.toString().trim()
+            val en = binding.tfenWord.text.toString().trim()
+            val lessonNum = binding.tfLessonNum.text.toString().trim().toIntOrNull() ?: 0
+
+            if (cz.isNotEmpty() && en.isNotEmpty()) {
+                addWordToLesson(cz, en, lessonNum)
+            } else {
+                Toast.makeText(requireContext(), "All fields are required", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
 
+        binding.saveClose.setOnClickListener {
+            backToDictionary()
+        }
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun getHighestLessonNumber() {
+        val userId = firebaseAuth.currentUser?.uid
+        if (userId != null) {
+            val lessonsRef = firestore.collection("users").document(userId)
+                .collection("lessons")
+
+            lessonsRef
+                .get()
+                .addOnSuccessListener { documents ->
+                    var highestLessonNumber = 0
+
+                    for (document in documents) {
+                        val lessonNumString = document.id
+                        val lessonNum = lessonNumString.toIntOrNull() ?: 0
+                        if (lessonNum > highestLessonNumber) {
+                            highestLessonNumber = lessonNum
+                        }
+                    }
+
+                    binding.tfLessonNum.setText(highestLessonNumber.toString())
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(
+                        requireContext(),
+                        "Error: ${exception.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
     }
 
-    private fun addWordToLesson(czechWord: String, englishWord: String, lessonNum: String) {
+    private fun addWordToLesson(czechWord: String, englishWord: String, lessonNum: Int) {
         val userId = firebaseAuth.currentUser?.uid
         if (userId != null) {
             val lessonRef = firestore.collection("users").document(userId)
-                .collection("lessons").document(lessonNum)
+                .collection("lessons").document(lessonNum.toString())
 
             lessonRef.get().addOnSuccessListener { document ->
                 if (document.exists()) {
@@ -76,18 +115,17 @@ class AddWordFragment : Fragment() {
                 } else {
                     createLessonWithWord(lessonRef, czechWord, englishWord)
                 }
-                val backToDictionary = DictionaryFragment()
-                val transaction = parentFragmentManager.beginTransaction()
-
-                transaction.replace(R.id.fragment_container, backToDictionary)
-                transaction.addToBackStack(null)
-
-                transaction.commit()
 
             }.addOnFailureListener {
                 Toast.makeText(requireContext(), "Error: ${it.message}", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun backToDictionary() {
+        val backToDictionary = DictionaryFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, backToDictionary).addToBackStack(null).commit()
     }
 
     private fun updateWordInLesson(
@@ -98,27 +136,23 @@ class AddWordFragment : Fragment() {
         lessonRef.update(
             "words",
             FieldValue.arrayUnion(hashMapOf("czech" to czechWord, "english" to englishWord))
-        )
-            .addOnSuccessListener {
-                // Inkrementace wordCount
-                lessonRef.update("wordCount", FieldValue.increment(1))
-                    .addOnSuccessListener {
-                        Toast.makeText(
-                            requireContext(),
-                            "Word added to lesson successfully",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-            }
-            .addOnFailureListener {
+        ).addOnSuccessListener {
+            // Inkrementace wordCount
+            lessonRef.update("wordCount", FieldValue.increment(1)).addOnSuccessListener {
                 Toast.makeText(
                     requireContext(),
-                    "Error adding word to lesson: ${it.message}",
+                    "Word added to lesson successfully",
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }.addOnFailureListener {
+            Toast.makeText(
+                requireContext(),
+                "Error adding word to lesson: ${it.message}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
-
 
     private fun createLessonWithWord(
         lessonRef: DocumentReference,
@@ -127,30 +161,24 @@ class AddWordFragment : Fragment() {
     ) {
         val newLessonData = hashMapOf(
             "words" to listOf(hashMapOf("czech" to czechWord, "english" to englishWord)),
-            "wordCount" to 1, // Nastavení počátečního počtu slov
+            "wordCount" to 1,
             "points" to 0,
             "skipped" to 0,
-            "mistakes" to 0
-
-
+            "mistakes" to 0,
+            "done" to false
         )
 
-        lessonRef.set(newLessonData).addOnSuccessListener {
+        lessonRef.set(newLessonData)
+            .addOnSuccessListener {
             Toast.makeText(requireContext(), "New lesson created with word", Toast.LENGTH_SHORT)
                 .show()
 
-            // Návrat do DictionaryFragment
-            val backToDictionary = DictionaryFragment()
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, backToDictionary).addToBackStack(null)
-                .commit()
+           }.addOnFailureListener {
+            Toast.makeText(
+                requireContext(),
+                "Error creating new lesson: ${it.message}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
-            .addOnFailureListener {
-                Toast.makeText(
-                    requireContext(),
-                    "Error creating new lesson: ${it.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
     }
 }

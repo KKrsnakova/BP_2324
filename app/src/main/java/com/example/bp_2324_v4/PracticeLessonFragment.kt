@@ -1,12 +1,11 @@
 package com.example.bp_2324_v4
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.bp_2324_v4.databinding.FragmentPracticeBinding
+import androidx.fragment.app.Fragment
 import com.example.bp_2324_v4.databinding.FragmentPracticeLessonBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -34,6 +33,7 @@ class PracticeLessonFragment : Fragment() {
         currentUserId = firebaseAuth.currentUser?.uid.toString()
 
 
+
         val lessonNum = arguments?.getString("lessonNum")
         if (lessonNum != null) {
             val wordCountRef = firestore.collection("users").document(currentUserId)
@@ -44,7 +44,7 @@ class PracticeLessonFragment : Fragment() {
                     val wordCounts = doc.getLong("wordCount") ?: 0
                     wordCount = wordCounts.toInt()
                     binding.tvWordCount.text = "Words count: $wordCount"
-                    binding.tvtext.text = "Lesson number: $lessonNum"
+                    binding.tvLessonNum.text = "Lesson number: $lessonNum"
                 } else {
                     Toast.makeText(context, "Lesson not found.", Toast.LENGTH_SHORT).show()
                 }
