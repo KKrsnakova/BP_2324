@@ -1,38 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/paper_removebg"
+    android:gravity="top|center"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp"
-    android:background="@drawable/paper"
-    tools:context=".PracticeLessonFragment">
+    android:padding="30dp"
+    tools:context=".practice.PracticeLessonFragment">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center|top"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/mainPic"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:contentDescription="Parrot image"
+            android:src="@drawable/pap4_bgrem" />
+
+        <TextView
+            android:id="@+id/tvLessonNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:fontFamily="@font/finger_paint_regular"
+            android:text="Build your vocabulary!"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvLessonNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:text="Lekce 1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
+        android:id="@+id/tvWordCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvWordCount"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:text="wordcoount" >
-    </TextView>
+        android:text="wordcoount"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <Button
+        android:id="@+id/btnStart"
         style="@style/customBtnStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnStart"
-        android:text="Start"/>
+        android:text="Start" />
+
+
 
 </LinearLayout>

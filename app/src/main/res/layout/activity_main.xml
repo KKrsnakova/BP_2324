@@ -14,10 +14,18 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/greenL"
+            android:background="@color/colorPrimary"
             android:elevation="4dp"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <ImageView
+                android:id="@+id/mainPic"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="Parrot image"
+                android:src="@drawable/pap3_bgrem" />
+
 
             <TextView
                 android:id="@+id/logoText"
@@ -59,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:backgroundTint="@color/greenL"
+                android:backgroundTint="@color/colorPrimary"
                 app:fabCradleMargin="10dp"
                 app:fabCradleRoundedCornerRadius="50dp">
 

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".grammarFragments.FutureFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/tenseRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/var_1"
+                style="@style/customRadioButtonTenseStyle"
+                android:checked="true"
+                android:text="Past Simple" />
+
+            <RadioButton
+                android:id="@+id/var_2"
+                style="@style/customRadioButtonTenseStyle"
+                android:text="Past Continuous" />
+
+            <RadioButton
+                android:id="@+id/var_3"
+                style="@style/customRadioButtonTenseStyle"
+                android:text="Past Perfect" />
+
+            <RadioButton
+                android:id="@+id/var_4"
+                style="@style/customRadioButtonTenseStyle"
+                android:text="Past Perfect Continuous" />
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/enName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+
+        <TextView
+            android:id="@+id/czName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/inter_bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cwUsage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/bgUsage"
+            app:contentPadding="10dp"
+            android:layout_marginBottom="20dp">
+
+
+            <LinearLayout
+                android:id="@+id/llUsage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTitleDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Usage"
+                    android:gravity="start"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    />
+
+                <TextView
+                    android:id="@+id/tvUsage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:text="@string/usagePS"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Show in czech"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:drawablePadding="8dp"
+                    app:drawableStartCompat="@drawable/ico_arrow_down" />
+
+
+                <TextView
+                    android:id="@+id/tvUsageCz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/usagePS"
+                    android:textColor="@color/textBlack"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:background="@color/bgUsage"
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cwForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/bgUsage"
+            app:contentPadding="10dp"
+            android:layout_marginBottom="20dp">
+
+
+            <LinearLayout
+                android:id="@+id/llForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTitleForm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Form"
+                    android:textColor="@color/textBlack"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:gravity="start"
+                    />
+
+                <TextView
+                    android:id="@+id/tvForm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/formPS"
+                    android:textColor="@color/textBlack"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Show in czech"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:drawablePadding="8dp"
+                    app:drawableStartCompat="@drawable/ico_arrow_down" />
+
+
+                <TextView
+                    android:id="@+id/tvFormCZ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/usagePS"
+                    android:textColor="@color/textBlack"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:background="@color/bgUsage"
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cwStructure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/bgUsage"
+            app:contentPadding="10dp"
+            android:layout_marginBottom="20dp">
+
+
+            <LinearLayout
+                android:id="@+id/llStructure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tvTitleStructure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Structure"
+                    android:textColor="@color/textBlack"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    />
+
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <!-- Kladná věta -->
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affirmative"
+                            android:textStyle="bold" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvAffirm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- -" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvAExample"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- -" />
+                    </TableRow>
+
+                    <!-- Záporná věta -->
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Negative"
+                            android:textStyle="bold" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvNegativ"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- - -" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvNExample"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- - -" />
+                    </TableRow>
+
+
+                    <!-- Otázka -->
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Question"
+                            android:textStyle="bold" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvQuestion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- - ?" />
+
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvQExample"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- - ?" />
+                    </TableRow>
+
+
+                </TableLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Show in czech"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:drawablePadding="8dp"
+                    app:drawableStartCompat="@drawable/ico_arrow_down" />
+
+
+                <TableLayout
+                    android:id="@+id/tvStructureCz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    >
+
+                    <!-- Kladná věta -->
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kladná věta"
+                            android:textStyle="bold" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvAffirmCz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- -" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvAExamplecz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- -" />
+                    </TableRow>
+
+                    <!-- Záporná věta -->
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Záporná věta"
+                            android:textStyle="bold" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvNegativCz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- - -" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvNExampleCz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- - -" />
+                    </TableRow>
+
+
+                    <!-- Otázka -->
+                    <TableRow>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tázací věta"
+                            android:textStyle="bold" />
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvQuestionCz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- - ?" />
+
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/tvQExampleCz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="- - ?" />
+                    </TableRow>
+
+
+                </TableLayout>
+
+
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

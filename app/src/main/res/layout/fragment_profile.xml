@@ -25,13 +25,14 @@
         android:src="@drawable/pexels_1"
         app:layout_constraintTop_toTopOf="parent"
 
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:contentDescription="@string/image_bg" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/fotoSpot"
         android:layout_width="120dp"
         android:layout_height="220dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
 
         app:cardElevation="10dp"
@@ -53,7 +54,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
         android:fontFamily="@font/inter_bold"
         android:textColor="@color/white"
@@ -61,49 +62,61 @@
         app:layout_constraintLeft_toRightOf="@+id/fotoSpot"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
+
+    <TextView
+        android:id="@+id/tfEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/fotoSpot"
+        app:layout_constraintTop_toBottomOf="@+id/image_bg"
+        app:drawableLeftCompat="@drawable/ico_email" />
+
+
     <RelativeLayout
         android:id="@+id/relativeLayout1"
 
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
 
-        android:layout_marginEnd="30dp"
-        android:background="@color/greenD"
+        android:background="@drawable/border_layout"
+        android:elevation="20dp"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fotoSpot">
 
+
         <RelativeLayout
-            android:id="@+id/pointsBlock"
+            android:id="@+id/lessonBlock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:paddingBottom="20dp"
-            android:padding="30sp">
+            android:padding="30dp">
 
             <TextView
-                android:id="@+id/tfPoints"
+                android:id="@+id/tfLessons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/inter_bold"
-                android:text="789"
-                android:textColor="@color/white"
+                android:text="@string/num_lessons"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/Points"
+                android:id="@+id/Lessons"
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
-                android:layout_below="@id/tfPoints"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tfLessons"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/inter_bold"
-                android:text="Poijnts"
-                android:layout_marginBottom="200dp"
-                android:textColor="@color/white"
+                android:text="@string/lessons"
                 android:textSize="12sp" />
         </RelativeLayout>
 
@@ -112,57 +125,14 @@
             android:layout_width="2dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_toRightOf="@+id/pointsBlock"
-            android:background="#72FFFFFF" />
-
-
-        <RelativeLayout
-            android:id="@+id/pointsLevels"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/view1"
-            android:padding="30dp">
-
-            <TextView
-                android:id="@+id/tfLevels"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/inter_bold"
-                android:text="888"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/Lvls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tfLevels"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/inter_bold"
-                android:text="Levels"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-        </RelativeLayout>
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="2dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_toRightOf="@+id/pointsLevels"
-            android:background="#72FFFFFF" />
-
+            android:layout_toEndOf="@+id/lessonBlock"
+            android:background="@color/colorPrimary" />
 
         <RelativeLayout
             android:id="@+id/wordsBlock"
+            android:layout_toEndOf="@+id/view1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/view2"
             android:padding="30dp">
 
             <TextView
@@ -171,8 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/inter_bold"
-                android:text="111"
-                android:textColor="@color/white"
+                android:text="@string/wordsCount"
                 android:textSize="12sp" />
 
             <TextView
@@ -183,7 +152,43 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/inter_bold"
                 android:text="Words"
-                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="2dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toEndOf="@+id/wordsBlock"
+            android:background="@color/colorPrimary" />
+
+        <RelativeLayout
+            android:id="@+id/pointsLevels"
+            android:layout_toEndOf="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="30dp">
+
+
+            <TextView
+                android:id="@+id/Lvls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tfLevels"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/levels"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tfLevels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/num_levels"
                 android:textSize="12sp" />
         </RelativeLayout>
 
@@ -191,35 +196,102 @@
     </RelativeLayout>
 
 
-    <TextView
-        android:id="@+id/tfEmail"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/relativeLayout_progress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:drawableLeft="@drawable/ico_email"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/inter_bold"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/fotoSpot"
-        app:layout_constraintTop_toBottomOf="@+id/image_bg" />
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout1">
 
-    <TextView
-        android:id="@+id/tfPassword"
+        <TextView
+            android:id="@+id/tf_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="@string/progress"
+             />
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        <TextView
+            android:id="@+id/title_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="Next level up" />
 
-        android:drawableLeft="@drawable/ico_lock"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/inter_bold"
-        android:text="Heslo"
-        android:textSize="15sp"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfEmail" />
+        <ProgressBar
+            android:id="@+id/pointsPB"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:progressDrawable="@drawable/custom_pbar" />
+
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/progress_0"
+            android:textColor="@android:color/white"
+            tools:ignore="RelativeOverlap" />
+
+
+        <ImageView
+            android:id="@+id/starImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/star"
+            android:contentDescription="@string/imageW" />
+
+        <TextView
+            android:id="@+id/tf_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Achievements"
+            android:layout_below="@id/starImageView"
+            />
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/border_layout"
+        android:contentDescription="@string/scrollview"
+        android:elevation="10dp"
+        android:padding="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout_progress"
+        tools:layout_editor_absoluteX="10dp">
+
+
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/starContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:alignContent="space_around"
+            app:flexWrap="wrap"
+            app:justifyContent="center" />
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,8 @@
     <color name="greyText">#727272</color>
     <color name="hint">#A1887F</color>
     <color name="yellow">#FFFF00</color>
-    <color name="bgUsage">#c8e1cc</color>
+    <color name="bgUsage">#F8E8CF</color>
+    <color name="bgUsage2">#c8e1cc</color>
 
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#388E3C</color>
@@ -23,6 +24,9 @@
     <color name="textRed">#CC0000</color>
     <color name="textGreen">#388E3C</color>
     <color name="textBlack">#FF000000</color>
+
+
+    <color name="ico_color">#62A961</color>
 
 
 

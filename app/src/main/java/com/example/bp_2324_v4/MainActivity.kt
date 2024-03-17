@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+       // setContentView(R.layout.activity_main)
 
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
-            // Nastavení položky menu "Home" jako vybrané
+            // Nastavení položky menu "Profile" jako vybrané
             navView.menu.findItem(R.id.navigation_profile)?.isChecked = true
 
 

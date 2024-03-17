@@ -89,7 +89,11 @@ class WordAdapter(
                 }
             }
             .addOnFailureListener { e ->
-                // TODO Handle error
+                Toast.makeText(
+                    context,
+                    "Error loading words: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 

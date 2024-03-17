@@ -15,7 +15,7 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="177dp"
         android:fontFamily="@font/finger_paint_regular"
-        android:text="Language Learn"
+        android:text="@string/tf_language_learn"
         android:textAlignment="center"
         android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@+id/tfFullName1"
@@ -38,10 +38,10 @@
             android:id="@+id/tfFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ico_person"
+            android:drawableStart="@drawable/ico_person2"
             android:drawablePadding="5dp"
             android:fontFamily="@font/inter_bold"
-            android:hint="Full name"
+            android:hint="@string/tf_full_name"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress" />
 
@@ -64,7 +64,7 @@
             android:drawableStart="@drawable/ico_email"
             android:drawablePadding="5dp"
             android:fontFamily="@font/inter_bold"
-            android:hint="E-mail"
+            android:hint="@string/tf_e_mail"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress" />
 
@@ -76,6 +76,7 @@
         style="@style/customLoginTextInputStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/tfPasswordCheck1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -87,8 +88,7 @@
             android:drawableStart="@drawable/ico_lock"
             android:drawablePadding="5dp"
             android:fontFamily="@font/inter_bold"
-            android:hint="Password"
-            android:importantForAutofill="no"
+            android:hint="@string/tf_password"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -101,6 +101,7 @@
         style="@style/customLoginTextInputStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/imgAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -112,8 +113,7 @@
             android:drawableStart="@drawable/ico_lock"
             android:drawablePadding="5dp"
             android:fontFamily="@font/inter_bold"
-            android:hint="Password check"
-            android:importantForAutofill="no"
+            android:hint="@string/tf_password_check"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -129,7 +129,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="userProfilePicture">
+        android:contentDescription="@string/iv_userprofilepicture">
 
     </ImageView>
 
@@ -141,7 +141,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/greenL"
         android:fontFamily="@font/inter_bold"
-        android:text="Add\nphoto"
+        android:text="@string/btn_add_photo"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +157,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/greenL"
         android:fontFamily="@font/inter_bold"
-        android:text="Register now"
+        android:text="@string/btn_register_now"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -169,7 +169,7 @@
         style="@style/customTextViewLoginStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already registered"
+        android:text="@string/tf_already_registered"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegister" />

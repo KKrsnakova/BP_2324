@@ -27,132 +27,70 @@ class PastFragment : Fragment() {
 
         firestoreDb = FirebaseFirestore.getInstance()
 
-        val presentGrammarRef = firestoreDb.collection("grammar").document("present")
         val pastGrammarRef = firestoreDb.collection("grammar").document("past")
-        val futureGrammarRef = firestoreDb.collection("grammar").document("future")
-
-        val presentSimpleRef = presentGrammarRef.collection("simple").document("Desc")
-        val presentPerfectRef = presentGrammarRef.collection("perfect").document("desc")
-        val presentPerfectcontRef =
-            presentGrammarRef.collection("perfect_continuous").document("desc")
-        val presentContinuousRef = presentGrammarRef.collection("continuous").document("desc")
 
         val pastSimpleRef = pastGrammarRef.collection("simple").document("desc")
         val pastPerfectRef = pastGrammarRef.collection("perfect").document("desc")
         val pastPerfectcontRef = pastGrammarRef.collection("perfect_continuous").document("desc")
         val pastContinuousRef = pastGrammarRef.collection("continuous").document("desc")
 
-        val futureSimpleRef = futureGrammarRef.collection("simple").document("Desc")
-        val futurePerfectRef = futureGrammarRef.collection("perfect").document("desc")
-        val futurePerfectcontRef =
-            futureGrammarRef.collection("perfect_continuous").document("desc")
-        val futureContinuousRef = futureGrammarRef.collection("continuous").document("Desc")
 
 
         _binding = FragmentPastBinding.inflate(inflater, container, false)
 
-        val tense = arguments?.getString("tense")
-        when (tense) {
-            "present" -> {
-                loadTense(binding, presentGrammarRef, presentSimpleRef)
-
-                binding.var1.text = "Present Simple"
-                binding.var2.text = "Present Continuous"
-                binding.var3.text = "Present Perfect"
-                binding.var4.text = "Present Present Continuous"
+        loadTense(binding, pastGrammarRef, pastSimpleRef)
 
 
-                binding.tenseRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-                    when (checkedId) {
-                        R.id.var_1 -> {
-                            loadTense(binding, presentGrammarRef, presentSimpleRef)
+        binding.var1.text = "Past Simple"
+        binding.var2.text = "Past Continuous"
+        binding.var3.text = "Past Perfect"
+        binding.var4.text = "Past\nPerfect Continuous"
 
+        loadTense(binding, pastGrammarRef, pastSimpleRef)
 
-                        }
-
-                        R.id.var_2 -> {
-                            loadTense(binding, presentGrammarRef, presentContinuousRef)
-                        }
-
-                        R.id.var_3 -> {
-                            loadTense(binding, presentGrammarRef, presentPerfectRef)
-                        }
-
-                        R.id.var_4 -> {
-                            loadTense(binding, presentGrammarRef, presentPerfectcontRef)
-                        }
-                    }
+        // Nastavení posluchačů pro RadioButtony
+        binding.tenseRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.var_1 -> {
+                    loadTense(binding, pastGrammarRef, pastSimpleRef)
                 }
-            }
 
-            "past" -> {
-                loadTense(binding, presentGrammarRef, presentSimpleRef)
-
-                binding.var1.text = "Past Simple"
-                binding.var2.text = "Past Continuous"
-                binding.var3.text = "Past Perfect"
-                binding.var4.text = "Past\nPresent Continuous"
-
-                loadTense(binding, pastGrammarRef, pastSimpleRef)
-
-                binding.tenseRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-                    when (checkedId) {
-                        R.id.var_1 -> {
-                            loadTense(binding, pastGrammarRef, pastSimpleRef)
-                        }
-
-                        R.id.var_2 -> {
-                            loadTense(binding, pastGrammarRef, pastContinuousRef)
-                        }
-
-                        R.id.var_3 -> {
-                            loadTense(binding, pastGrammarRef, pastPerfectRef)
-                        }
-
-                        R.id.var_4 -> {
-                            loadTense(binding, pastGrammarRef, pastPerfectcontRef)
-                        }
-                    }
+                R.id.var_2 -> {
+                    loadTense(binding, pastGrammarRef, pastContinuousRef)
                 }
-            }
 
-            "future" -> {
-                binding.var1.text = "Future Simple"
-                binding.var2.text = "Future Continuous"
-                binding.var3.text = "Future Perfect"
-                binding.var4.text = "Future Perfect Continuous"
+                R.id.var_3 -> {
+                    loadTense(binding, pastGrammarRef, pastPerfectRef)
+                }
 
-                // Načtěte a zobrazte obsah pro future tense
-                loadTense(binding, futureGrammarRef, futureSimpleRef)
-
-                binding.tenseRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-                    when (checkedId) {
-                        R.id.var_1 -> {
-                            loadTense(binding, futureGrammarRef, futureSimpleRef)
-                        }
-
-                        R.id.var_2 -> {
-                            loadTense(binding, futureGrammarRef, futureContinuousRef)
-                        }
-
-                        R.id.var_3 -> {
-                            loadTense(binding, futureGrammarRef, futurePerfectRef)
-                        }
-
-                        R.id.var_4 -> {
-                            loadTense(binding, futureGrammarRef, futurePerfectcontRef)
-                        }
-                    }
+                R.id.var_4 -> {
+                    loadTense(binding, pastGrammarRef, pastPerfectcontRef)
                 }
             }
         }
-        return binding.root
 
-    }
+        binding.cwUsage.setOnClickListener{
+            val v =  if (binding.tvUsageCz.visibility == View.GONE) View.VISIBLE else View.GONE
+            binding.tvUsageCz.visibility = v
+        }
 
+        binding.cwForm.setOnClickListener{
+            val v =  if (binding.tvFormCZ.visibility == View.GONE) View.VISIBLE else View.GONE
+            binding.tvFormCZ.visibility = v
+        }
+
+        binding.cwStructure.setOnClickListener{
+            val v =  if (binding.tvStructureCz.visibility == View.GONE) View.VISIBLE else View.GONE
+            binding.tvStructureCz.visibility = v
+        }
+
+
+return binding.root
 
 }
 
+
+}
 private fun loadTense(
     binding: FragmentPastBinding,
     tenseGrammarRef: DocumentReference,
@@ -162,55 +100,37 @@ private fun loadTense(
         specTenseRef.get().addOnSuccessListener { documentSnapshot ->
             if (documentSnapshot != null && documentSnapshot.exists()) {
 
-                if (binding.tvMutation.text == "EN"){
-                    // Získá hodnoty z dokumentu EN
-                    binding.apply {
-                        enName.text =
-                            documentSnapshot.getString("name")
-                                ?: "Default value for test1"
-                        czName.text =
-                            documentSnapshot.getString("namecz")
-                                ?: "Default value for test2"
-
-                        tvUsage.text = documentSnapshot.getString("usage") ?: "Usage of tense"
-                        tvForm.text = documentSnapshot.getString("form") ?: "Form of tense"
-
-                        tvAffirm.text = documentSnapshot.getString("affirm") ?: "Affirmation form"
-                        tvNegativ.text = documentSnapshot.getString("negative") ?: "Negativ form"
-                        tvQuestion.text = documentSnapshot.getString("quest") ?: "Question form"
-
-                        tvAExample.text = documentSnapshot.getString("aEx") ?: "Example of affirmation"
-                        tvNExample.text = documentSnapshot.getString("nEx") ?: "Example of negative"
-                        tvQExample.text = documentSnapshot.getString("qEX") ?: "Example of question"
-
-                    }
-                } else {
-                    // Získá hodnoty z dokumentu CZ
-                    binding.apply {
-                        enName.text =
-                            documentSnapshot.getString("name")
-                                ?: "Default value for test1"
-                        czName.text =
-                            documentSnapshot.getString("namecz")
-                                ?: "Default value for test2"
-
-                        tvUsage.text = documentSnapshot.getString("usagecz") ?: "Usage of tense"
-                        tvForm.text = documentSnapshot.getString("formcz") ?: "Form of tense"
-
-                        tvAffirm.text = documentSnapshot.getString("affirmcz") ?: "Affirmation form"
-                        tvNegativ.text = documentSnapshot.getString("negativecz") ?: "Negativ form"
-                        tvQuestion.text = documentSnapshot.getString("questcz") ?: "Question form"
-
-                        tvAExample.text = documentSnapshot.getString("aExcz") ?: "Example of affirmation"
-                        tvNExample.text = documentSnapshot.getString("nExcz") ?: "Example of negative"
-                        tvQExample.text = documentSnapshot.getString("qExcz") ?: "Example of question"
-
-                    }
+                // Získání hodnot z dokumentu
+                binding.apply {
+                    enName.text = documentSnapshot.getString("name") ?: "Default value for test1"
+                    czName.text = documentSnapshot.getString("namecz") ?: "Default value for test2"
+                    tvUsage.text = documentSnapshot.getString("usage") ?: "Usage of tense"
+                    tvForm.text = documentSnapshot.getString("form") ?: "Form of tense"
+                    tvAffirm.text = documentSnapshot.getString("affirm") ?: "Affirmation form"
+                    tvNegativ.text = documentSnapshot.getString("negative") ?: "Negative form"
+                    tvQuestion.text = documentSnapshot.getString("questcz") ?: "Question form"
+                    tvAExample.text = documentSnapshot.getString("aEx") ?: "Example of affirmation"
+                    tvNExample.text = documentSnapshot.getString("nEx") ?: "Example of negative"
+                    tvQExample.text = documentSnapshot.getString("qEX") ?: "Example of question"
+                    tvUsageCz.text = documentSnapshot.getString("usagecz") ?: "Usage of tense"
                 }
 
+
+                binding.apply {
+                    tvUsageCz.text = documentSnapshot.getString("usagecz") ?: "Usage of tense"
+                    tvFormCZ.text = documentSnapshot.getString("formcz") ?: "Form of tense"
+                    tvAffirmCz.text = documentSnapshot.getString("affirmcz") ?: "Affirmation form"
+                    tvNegativCz.text = documentSnapshot.getString("negativecz") ?: "Negative form"
+                    tvQuestionCz.text = documentSnapshot.getString("questcz") ?: "Question form"
+                    tvAExamplecz.text =
+                        documentSnapshot.getString("aExcz") ?: "Example of affirmation"
+                    tvNExampleCz.text = documentSnapshot.getString("nExcz") ?: "Example of negative"
+                    tvQExampleCz.text = documentSnapshot.getString("qEXcz") ?: "Example of question"
+                }
             }
+
         }.addOnFailureListener { exception ->
-            Log.d("Firestore", "Chyba při získávání dokumentu: ", exception)
+            Log.d("Firestore", "Error getting document: ", exception)
         }
     }
 }

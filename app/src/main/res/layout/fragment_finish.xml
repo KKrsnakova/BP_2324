@@ -5,8 +5,8 @@
     android:orientation="vertical"
     android:padding="55dp"
     android:gravity="center_horizontal"
-    android:background="@drawable/paper"
-    tools:context=".FinishFragment">
+    android:background="@drawable/paper_removebg"
+    tools:context=".practice.FinishFragment">
 
     <TextView
         android:id="@+id/tvLessonNumber"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="10dp"
         android:gravity="center">
 
     <TextView

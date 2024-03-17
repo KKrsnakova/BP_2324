@@ -7,8 +7,8 @@
     android:orientation="vertical"
     android:padding="50dp"
     android:gravity="center_horizontal"
-    android:background="@drawable/paper"
-    tools:context=".WordQuestionFragment">
+    android:background="@drawable/paper_removebg"
+    tools:context=".practice.WordQuestionFragment">
 
     <TextView
         android:id="@+id/tvLessonNumber"

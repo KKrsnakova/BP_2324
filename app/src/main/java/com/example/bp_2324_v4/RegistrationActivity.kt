@@ -2,11 +2,10 @@ package com.example.bp_2324_v4
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.example.bp_2324_v4.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -50,7 +49,7 @@ class RegistrationActivity : AppCompatActivity() {
                 if (password == passwordCheck) {
                     if (imageUri != null) {
                         // Pokračovat v registraci a nahrání obrázku
-                        registerUser(email, password, name, imageUri!!, 2)
+                        registerUser(email, password, name, imageUri!!)
                     } else {
                         Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
                     }
@@ -72,8 +71,7 @@ class RegistrationActivity : AppCompatActivity() {
         email: String,
         password: String,
         name: String,
-        imageUri: Uri,
-        role: Int
+        imageUri: Uri
     ) {
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->

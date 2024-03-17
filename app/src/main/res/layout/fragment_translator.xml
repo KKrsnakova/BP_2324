@@ -29,13 +29,15 @@
 
             <EditText
                 android:id="@+id/etSource"
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
                 android:minHeight="200dp"
                 android:hint="Enter English Text"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:background="@drawable/border_layout"/>
 
 
             <TextView
@@ -46,15 +48,35 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 />
 
-            <TextView
-                android:id="@+id/tvTranslated"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:layout_width="match_parent"
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:minHeight="200dp"
-                android:text=""
-                android:textSize="18sp" />
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/pap2_bgrem"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.3" />
+
+                <TextView
+                    android:id="@+id/tvTranslated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:minHeight="200dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Translated text"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+
 
         </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.example.bp_2324_v4
+package com.example.bp_2324_v4.practice
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.bp_2324_v4.R
 import com.example.bp_2324_v4.databinding.FragmentFinishBinding
 import com.example.bp_2324_v4.fragments.PracticeFragment
 import com.google.firebase.auth.FirebaseAuth

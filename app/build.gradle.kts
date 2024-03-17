@@ -68,8 +68,8 @@ dependencies {
     //Translator
     implementation ("com.google.mlkit:translate:17.0.2")
 
-    //Material Desing
-   // implementation ("com.google.android.material:material:1.11.0")
+    //Fexbox
+    implementation("com.google.android:flexbox:2.0.1")
 
 
 }

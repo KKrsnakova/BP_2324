@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bp_2324_v4.practice.PracticeLessonFragment
 import com.example.bp_2324_v4d.model.Lesson
 
 

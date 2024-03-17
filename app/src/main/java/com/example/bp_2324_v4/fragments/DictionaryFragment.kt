@@ -1,6 +1,7 @@
 package com.example.bp_2324_v4.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -125,17 +126,12 @@ class DictionaryFragment : Fragment() {
                     updateUserWordCount()
                     updateUserLevelCount()
                 }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(
-                        requireContext(),
-                        "Error loading words: ${exception.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                .addOnFailureListener { e ->
+                    exception(e, "Error loading words:")
                 }
 
         } else {
             // Získání dat z Firestore
-
             firestore.collection("users").document(userId).collection("lessons")
                 .get()
                 .addOnSuccessListener { lessonsSnapshot ->
@@ -167,12 +163,9 @@ class DictionaryFragment : Fragment() {
                     updateUserWordCount()
                     updateUserLevelCount()
                 }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(
-                        requireContext(),
-                        "Error loading words: ${exception.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                .addOnFailureListener { e ->
+
+                    exception(e, "Error loading words:")
                 }
         }
     }
@@ -198,20 +191,18 @@ class DictionaryFragment : Fragment() {
 
                     // Aktualizace dokumentu uživatele s novým počtem levelů
                     userRef.update("lessons", levelCount)
-                        .addOnSuccessListener {
-                            //TODO Log.d("UpdateUser", "User level count updated successfully.")
-                        }
                         .addOnFailureListener { e ->
-                            //TODO Log.e("UpdateUser", "Error updating user level count", e)
+                            exception(e, "Error updating user level count")
                         }
                 }
                 .addOnFailureListener { e ->
-                    //TODO Log.e("UpdateUser", "Error getting lessons", e)
+                    exception(e, "Error getting lesson")
                 }
         } else {
-            //TODO Log.d("UpdateUser", "User not logged in")
+            Log.d("UpdateUser", "User not logged in")
         }
     }
+
 
     private fun updateUserWordCount() {
         val userId = firebaseAuth.currentUser?.uid
@@ -229,18 +220,24 @@ class DictionaryFragment : Fragment() {
 
                     // Aktualizace dokumentu uživatele s novým počtem slovíček
                     userRef.update("words", wordCount)
-                        .addOnSuccessListener {
-                            //TODO Log.d("UpdateUser", "User word count updated successfully.")
-                        }
                         .addOnFailureListener { e ->
-                            //TODO Log.e("UpdateUser", "Error updating user word count", e)
+                            exception(e, "Error updating user word count")
                         }
                 }
                 .addOnFailureListener { e ->
-                    //TODO Log.e("UpdateUser", "Error getting lessons", e)
+                    exception(e, "Error getting lesson")
                 }
         } else {
-            //TODO Log.d("UpdateUser", "User not logged in")
+            Log.d("UpdateUser", "User not logged in")
         }
+    }
+
+
+    private fun exception(e: Exception, text: String) {
+        Toast.makeText(
+            requireContext(),
+            "$text: ${e.message}",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
