@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bp_2324_v4.LessonAdapter
+import com.example.bp_2324_v4.recyclerOperations.LessonAdapter
 import com.example.bp_2324_v4.databinding.FragmentPracticeBinding
 import com.example.bp_2324_v4d.model.Lesson
 import com.google.firebase.auth.FirebaseAuth

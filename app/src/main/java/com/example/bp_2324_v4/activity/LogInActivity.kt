@@ -1,4 +1,4 @@
-package com.example.bp_2324_v4
+package com.example.bp_2324_v4.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

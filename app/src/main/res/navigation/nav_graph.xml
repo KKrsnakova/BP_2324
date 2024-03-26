@@ -3,26 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
-
+    app:startDestination="@id/logInActivity">
+    <activity
+        android:id="@+id/logInActivity"
+        android:name="com.example.bp_2324_v4.activity.LogInActivity"
+        android:label="activity_log_in"
+        tools:layout="@layout/activity_log_in" />
+    <activity
+        android:id="@+id/registrationActivity"
+        android:name="com.example.bp_2324_v4.activity.RegistrationActivity"
+        android:label="activity_registration"
+        tools:layout="@layout/activity_registration" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.bp_2324_v4.activity.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.bp_2324_v4.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first" >
-
+        android:id="@+id/profileFragment"
+        android:name="com.example.bp_2324_v4.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_profileFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.bp_2324_v4.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second" >
-
+        android:id="@+id/grammarFragment"
+        android:name="com.example.bp_2324_v4.fragments.GrammarFragment"
+        android:label="fragment_grammar"
+        tools:layout="@layout/fragment_grammar" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_grammarFragment_to_presentFragment"
+            app:destination="@id/presentFragment" />
+        <action
+            android:id="@+id/action_grammarFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
+    <fragment
+        android:id="@+id/presentFragment"
+        android:name="com.example.bp_2324_v4.grammarFragments.PresentFragment"
+        android:label="fragment_present"
+        tools:layout="@layout/fragment_present" />
 </navigation>

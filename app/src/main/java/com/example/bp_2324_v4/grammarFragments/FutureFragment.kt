@@ -43,9 +43,6 @@ class FutureFragment : Fragment() {
         binding.var4.text = "Future Perfect Continuous"
 
 
-
-
-
         // Nastavení posluchačů pro RadioButtony
         binding.tenseRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
@@ -86,56 +83,49 @@ class FutureFragment : Fragment() {
     }
 
 
+    private fun loadTense(
+        binding: FragmentFutureBinding,
+        tenseGrammarRef: DocumentReference,
+        specTenseRef: DocumentReference
+    ) {
+        tenseGrammarRef.get().addOnSuccessListener { _ ->
+            specTenseRef.get().addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot != null && documentSnapshot.exists()) {
 
-}
+                    // Získání hodnot z dokumentu
+                    binding.apply {
+                        enName.text = documentSnapshot.getString("name") ?: "Default value for test1"
+                        czName.text = documentSnapshot.getString("namecz") ?: "Default value for test2"
+                        tvUsage.text = documentSnapshot.getString("usage") ?: "Usage of tense"
+                        tvForm.text = documentSnapshot.getString("form") ?: "Form of tense"
+                        tvAffirm.text = documentSnapshot.getString("affirm") ?: "Affirmation form"
+                        tvNegativ.text = documentSnapshot.getString("negative") ?: "Negative form"
+                        tvQuestion.text = documentSnapshot.getString("questcz") ?: "Question form"
+                        tvAExample.text = documentSnapshot.getString("aEx") ?: "Example of affirmation"
+                        tvNExample.text = documentSnapshot.getString("nEx") ?: "Example of negative"
+                        tvQExample.text = documentSnapshot.getString("qEX") ?: "Example of question"
+                        tvUsageCz.text = documentSnapshot.getString("usagecz") ?: "Usage of tense"
+                    }
 
 
-private fun loadTense(
-    binding: FragmentFutureBinding,
-    tenseGrammarRef: DocumentReference,
-    specTenseRef: DocumentReference
-) {
-    tenseGrammarRef.get().addOnSuccessListener { _ ->
-        specTenseRef.get().addOnSuccessListener { documentSnapshot ->
-            if (documentSnapshot != null && documentSnapshot.exists()) {
-
-                // Získání hodnot z dokumentu
-                binding.apply {
-                    enName.text = documentSnapshot.getString("name") ?: "Default value for test1"
-                    czName.text = documentSnapshot.getString("namecz") ?: "Default value for test2"
-                    tvUsage.text = documentSnapshot.getString("usage") ?: "Usage of tense"
-                    tvForm.text = documentSnapshot.getString("form") ?: "Form of tense"
-                    tvAffirm.text = documentSnapshot.getString("affirm") ?: "Affirmation form"
-                    tvNegativ.text = documentSnapshot.getString("negative") ?: "Negative form"
-                    tvQuestion.text = documentSnapshot.getString("questcz") ?: "Question form"
-                    tvAExample.text = documentSnapshot.getString("aEx") ?: "Example of affirmation"
-                    tvNExample.text = documentSnapshot.getString("nEx") ?: "Example of negative"
-                    tvQExample.text = documentSnapshot.getString("qEX") ?: "Example of question"
-                    tvUsageCz.text = documentSnapshot.getString("usagecz") ?: "Usage of tense"
+                    binding.apply {
+                        tvUsageCz.text = documentSnapshot.getString("usagecz") ?: "Usage of tense"
+                        tvFormCZ.text = documentSnapshot.getString("formcz") ?: "Form of tense"
+                        tvAffirmCz.text = documentSnapshot.getString("affirmcz") ?: "Affirmation form"
+                        tvNegativCz.text = documentSnapshot.getString("negativecz") ?: "Negative form"
+                        tvQuestionCz.text = documentSnapshot.getString("questcz") ?: "Question form"
+                        tvAExamplecz.text =
+                            documentSnapshot.getString("aExcz") ?: "Example of affirmation"
+                        tvNExampleCz.text = documentSnapshot.getString("nExcz") ?: "Example of negative"
+                        tvQExampleCz.text = documentSnapshot.getString("qEXcz") ?: "Example of question"
+                    }
                 }
 
-
-                binding.apply {
-                    tvUsageCz.text = documentSnapshot.getString("usagecz") ?: "Usage of tense"
-                    tvFormCZ.text = documentSnapshot.getString("formcz") ?: "Form of tense"
-                    tvAffirmCz.text = documentSnapshot.getString("affirmcz") ?: "Affirmation form"
-                    tvNegativCz.text = documentSnapshot.getString("negativecz") ?: "Negative form"
-                    tvQuestionCz.text = documentSnapshot.getString("questcz") ?: "Question form"
-                    tvAExamplecz.text =
-                        documentSnapshot.getString("aExcz") ?: "Example of affirmation"
-                    tvNExampleCz.text = documentSnapshot.getString("nExcz") ?: "Example of negative"
-                    tvQExampleCz.text = documentSnapshot.getString("qEXcz") ?: "Example of question"
-                }
+            }.addOnFailureListener { e ->
+                d("Firestore", "Error getting document: ", e)
             }
-
-        }.addOnFailureListener { e ->
-            d("Firestore", "Error getting document: ", e)
         }
     }
+
+
 }
-
-
-
-
-
-// return inflater.inflate(R.layout.fragment_future, container, false)

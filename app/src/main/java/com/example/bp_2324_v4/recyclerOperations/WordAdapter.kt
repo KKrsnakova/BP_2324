@@ -1,4 +1,4 @@
-package com.example.bp_2324_v4
+package com.example.bp_2324_v4.recyclerOperations
 
 import android.content.Context
 import android.speech.tts.TextToSpeech
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bp_2324_v4.R
 import com.example.bp_2324_v4.model.Word
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -22,13 +23,12 @@ class WordAdapter(
     private var buttonVisible = true
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.word_item, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.word_item, parent, false)
         return WordViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
-
-
         val currentWord = mutableWords[position]
         holder.tvTitle.text = currentWord.english
         holder.tvLessonNum.text = currentWord.lessonNum
@@ -38,13 +38,11 @@ class WordAdapter(
             textToSpeechNow(currentWord.english)
         }
 
-        if (buttonVisible){
+        if (buttonVisible) {
             holder.btnTextToSpeech.visibility = View.VISIBLE
-        }else{
+        } else {
             holder.btnTextToSpeech.visibility = View.GONE
         }
-
-
     }
 
     private fun textToSpeechNow(english: String) {
@@ -83,7 +81,6 @@ class WordAdapter(
                             lessonRef.delete()
                         }
                     }
-
                     mutableWords.removeAt(position)
                     notifyItemRemoved(position)
                 }
@@ -97,7 +94,7 @@ class WordAdapter(
             }
     }
 
-    fun setBtnVisibility(visible: Boolean){
+    fun setBtnVisibility(visible: Boolean) {
         buttonVisible = visible
         notifyDataSetChanged()
     }

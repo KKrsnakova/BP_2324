@@ -20,7 +20,7 @@
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/ico_settings"
-        android:title="Practis" />
+        android:title="Practice" />
 
     <item
         android:id="@+id/navigation_translator"

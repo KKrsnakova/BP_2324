@@ -1,4 +1,4 @@
-package com.example.bp_2324_v4
+package com.example.bp_2324_v4.activity
 
 import android.content.Intent
 import android.net.Uri
@@ -36,7 +36,7 @@ class RegistrationActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
 
         binding.btnAddFoto.setOnClickListener {
-            pickImage.launch("image/*")  // Spustí intent pro výběr obrázku
+            pickImage.launch("image/*")
         }
 
         binding.btnRegister.setOnClickListener {
@@ -125,7 +125,6 @@ class RegistrationActivity : AppCompatActivity() {
             "password" to password,
             "email" to email,
             "imageUrl" to imageUrl,
-            "role" to 2, //výchozí role User (2), Admin (1)
             "lessons" to 0,
             "points" to 0,
             "words" to 0

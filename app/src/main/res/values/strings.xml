@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BP_2324_V4</string>
+    <string name="app_name">Language Learn</string>
     <string name="title_activity_login">LoginActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

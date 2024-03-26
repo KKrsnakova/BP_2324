@@ -10,9 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bp_2324_v4.AddWordFragment
 import com.example.bp_2324_v4.R
-import com.example.bp_2324_v4.WordAdapter
+import com.example.bp_2324_v4.recyclerOperations.WordAdapter
 import com.example.bp_2324_v4.databinding.FragmentDictionaryBinding
 import com.example.bp_2324_v4.model.Word
 import com.google.firebase.auth.FirebaseAuth

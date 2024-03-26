@@ -1,4 +1,4 @@
-package com.example.bp_2324_v4
+package com.example.bp_2324_v4.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.bp_2324_v4.R
 import com.example.bp_2324_v4.databinding.FragmentAddWordBinding
-import com.example.bp_2324_v4.fragments.DictionaryFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
@@ -20,20 +20,15 @@ class AddWordFragment : Fragment() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddWordBinding.inflate(inflater, container, false)
 
         firebaseAuth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-
-        // Získání nejvyššího čísla lekce
         getHighestLessonNumber()
-
         binding.btnSaveClose.setOnClickListener {
             val cz = binding.tfczWord.text.toString().trim()
             val en = binding.tfenWord.text.toString().trim()
@@ -50,10 +45,7 @@ class AddWordFragment : Fragment() {
                     .show()
             }
         }
-
         binding.btnSaveAddNext.setOnClickListener {
-
-
             val cz = binding.tfczWord.text.toString().trim()
             val en = binding.tfenWord.text.toString().trim()
             val lessonNum = binding.tfLessonNum.text.toString().trim().toIntOrNull() ?: 0
@@ -65,7 +57,6 @@ class AddWordFragment : Fragment() {
                     .show()
             }
         }
-
         binding.saveClose.setOnClickListener {
             backToDictionary()
         }
@@ -77,12 +68,10 @@ class AddWordFragment : Fragment() {
         if (userId != null) {
             val lessonsRef = firestore.collection("users").document(userId)
                 .collection("lessons")
-
             lessonsRef
                 .get()
                 .addOnSuccessListener { documents ->
                     var highestLessonNumber = 0
-
                     for (document in documents) {
                         val lessonNumString = document.id
                         val lessonNum = lessonNumString.toIntOrNull() ?: 0
@@ -123,7 +112,7 @@ class AddWordFragment : Fragment() {
     }
 
     private fun backToDictionary() {
-        val backToDictionary = DictionaryFragment()
+        val backToDictionary = com.example.bp_2324_v4.fragments.DictionaryFragment()
         val transaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, backToDictionary).addToBackStack(null).commit()
     }
@@ -170,15 +159,15 @@ class AddWordFragment : Fragment() {
 
         lessonRef.set(newLessonData)
             .addOnSuccessListener {
-            Toast.makeText(requireContext(), "New lesson created with word", Toast.LENGTH_SHORT)
-                .show()
+                Toast.makeText(requireContext(), "New lesson created with word", Toast.LENGTH_SHORT)
+                    .show()
 
-           }.addOnFailureListener {
-            Toast.makeText(
-                requireContext(),
-                "Error creating new lesson: ${it.message}",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
+            }.addOnFailureListener {
+                Toast.makeText(
+                    requireContext(),
+                    "Error creating new lesson: ${it.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
     }
 }
